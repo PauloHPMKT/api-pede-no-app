@@ -59,6 +59,23 @@ describe('Product Entity', () => {
     );
   });
 
+  it('should create a product with name, price, description, ingredients and categories', () => {
+    const sut = makeSut();
+    sut['description'] = 'Any Product Description';
+    sut['ingredients'] = ['ingredient1', 'ingredient2'];
+    sut['categories'] = ['category1', 'category2'];
+    expect(sut).toStrictEqual(
+      expect.objectContaining({
+        name: 'Product Name',
+        price: 25,
+        imagePath: null,
+        description: 'Any Product Description',
+        ingredients: ['ingredient1', 'ingredient2'],
+        categories: ['category1', 'category2'],
+      }),
+    );
+  });
+
   it('should check if created_at is a Date', () => {
     const sut = makeSut();
     expect(sut.created_at).toBeInstanceOf(Date);
