@@ -7,7 +7,7 @@
   "license": "ISC",
   "description": "",
   "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests --silent",
     "test:staged": "npm test --passWithNoTests --findRelatedTests --silent",
     "prepare": "husky"
   },
