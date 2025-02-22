@@ -21,4 +21,16 @@ describe('CreateProductController', () => {
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body).toStrictEqual(new Error('Missing param: name'));
   });
+
+  it('should return 400 if no price is provided', () => {
+    const sut = makeSut();
+    const httpRequest = {
+      body: {
+        name: 'Product Name',
+      },
+    };
+    const httpResponse = sut.handle(httpRequest);
+    expect(httpResponse.statusCode).toBe(400);
+    expect(httpResponse.body).toStrictEqual(new Error('Missing param: price'));
+  });
 });
