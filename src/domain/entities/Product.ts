@@ -5,6 +5,7 @@ export class Product {
   public description?: string;
   public ingredients?: string[];
   public categories?: string[];
+  public created_at?: Date;
 
   constructor(props: Partial<Product>) {
     Object.assign(this, props);
@@ -13,5 +14,6 @@ export class Product {
     this.description = props.description ?? null;
     this.ingredients = props.ingredients ?? [];
     this.categories = props.categories ?? [];
+    this.created_at = props.created_at ?? new Date();
   }
 }
