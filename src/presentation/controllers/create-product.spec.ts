@@ -1,3 +1,5 @@
+import { CreateProductDto } from '../dtos/create-product-dto';
+import { HttpRequest } from '../protocols/http-request';
 import { CreateProductController } from './create-product';
 
 const makeSut = (): CreateProductController => {
@@ -17,7 +19,9 @@ describe('CreateProductController', () => {
         price: 25,
       },
     };
-    const httpResponse = sut.handle(httpRequest);
+    const httpResponse = sut.handle(
+      httpRequest as HttpRequest<CreateProductDto>,
+    );
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body).toStrictEqual(new Error('Missing param: name'));
   });
@@ -29,7 +33,9 @@ describe('CreateProductController', () => {
         name: 'Product Name',
       },
     };
-    const httpResponse = sut.handle(httpRequest);
+    const httpResponse = sut.handle(
+      httpRequest as HttpRequest<CreateProductDto>,
+    );
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body).toStrictEqual(new Error('Missing param: price'));
   });
