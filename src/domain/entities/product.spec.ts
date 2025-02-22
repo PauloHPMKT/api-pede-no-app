@@ -43,6 +43,22 @@ describe('Product Entity', () => {
     );
   });
 
+  it('should create a product with name, price, description and imagePath', () => {
+    const sut = makeSut();
+    sut['description'] = 'Any Product Description';
+    sut['imagePath'] = 'imagePath.jpg';
+    expect(sut).toStrictEqual(
+      expect.objectContaining({
+        name: 'Product Name',
+        price: 25,
+        imagePath: 'imagePath.jpg',
+        description: 'Any Product Description',
+        ingredients: [],
+        categories: [],
+      }),
+    );
+  });
+
   it('should create a product with name, price, description and ingredients', () => {
     const sut = makeSut();
     sut['description'] = 'Any Product Description';
