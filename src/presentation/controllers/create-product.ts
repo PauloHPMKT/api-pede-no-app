@@ -18,5 +18,12 @@ export class CreateProductController {
         body: new Error('Missing param: name'),
       };
     }
+
+    if (!httpRequest.body.price) {
+      return {
+        statusCode: 400,
+        body: new Error('Missing param: price'),
+      };
+    }
   }
 }
