@@ -28,6 +28,21 @@ describe('Product Entity', () => {
     );
   });
 
+  it('should create a product with name, price and description', () => {
+    const sut = makeSut();
+    sut['description'] = 'Any Product Description';
+    expect(sut).toStrictEqual(
+      expect.objectContaining({
+        name: 'Product Name',
+        price: 25,
+        imagePath: null,
+        description: 'Any Product Description',
+        ingredients: [],
+        categories: [],
+      }),
+    );
+  });
+
   it('should check if created_at is a Date', () => {
     const sut = makeSut();
     expect(sut.created_at).toBeInstanceOf(Date);
